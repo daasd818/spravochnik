@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Синхронный Справочник 📚</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Боковая панель -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h1 class="logo">📚 Справочник</h1>
+                <button class="theme-toggle" id="themeToggle" title="Переключить тему">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 Поиск...">
+            </div>
+
+            <button class="add-btn" id="addBtn">➕ Добавить</button>
+
+            <div class="items-list" id="itemsList"></div>
+        </aside>
+
+        <!-- Главная область -->
+        <main class="main-content">
+            <div class="content-header">
+                <h2 id="selectedTitle">Добро пожаловать!</h2>
+                <div class="content-actions">
+                    <button class="edit-btn" id="editBtn" style="display: none;">✏️ Редактировать</button>
+                    <button class="delete-btn" id="deleteBtn" style="display: none;">🗑️ Удалить</button>
+                </div>
+            </div>
+
+            <div class="content-body">
+                <div id="emptyState" class="empty-state">
+                    <div class="empty-icon">📌</div>
+                    <p>Выберите элемент из списка или добавьте новый</p>
+                </div>
+                <div id="contentArea" class="content-display" style="display: none;">
+                    <div id="contentText"></div>
+                    <div class="content-footer">
+                        <small id="lastModified"></small>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Модальное окно добавления/редактирования -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitle">Добавить элемент</h3>
+                <button class="close-btn" id="closeBtn">&times;</button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="titleInput">📝 Название:</label>
+                    <input type="text" id="titleInput" placeholder="Введите название...">
+                </div>
+
+                <div class="form-group">
+                    <label for="contentInput">📄 Информация:</label>
+                    <textarea id="contentInput" placeholder="Введите информацию..." rows="8"></textarea>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn-cancel" id="cancelBtn">Отмена</button>
+                <button class="btn-save" id="saveBtn">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подтверждение удаления -->
+    <div class="modal" id="confirmModal">
+        <div class="modal-content confirm-dialog">
+            <div class="modal-header">
+                <h3>Подтверждение</h3>
+            </div>
+            <div class="modal-body">
+                <p id="confirmText">Вы уверены?</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-cancel" id="confirmCancelBtn">Отмена</button>
+                <button class="btn-delete" id="confirmDeleteBtn">Удалить</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
